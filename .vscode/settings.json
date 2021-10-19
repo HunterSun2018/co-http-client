@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "chrono": "cpp",
+        "string": "cpp",
+        "exception": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "ratio": "cpp",
+        "stdexcept": "cpp",
+        "thread": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "coroutine": "cpp",
+        "*.ipp": "cpp",
+        "iostream": "cpp",
+        "system_error": "cpp"
+    },
+    "cmake.configureOnOpen": true
+}
