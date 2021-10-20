@@ -55,14 +55,14 @@ co_helper::Task<void> test(net::io_context &ioc)
     ssl::context ctx{ssl::context::tlsv12_client};
 
     // This holds the root certificate used for verification
-    //load_root_certificates(ctx);
+    // load_root_certificates(ctx);
 
     // Verify the remote server's certificate
     ctx.set_verify_mode(ssl::verify_none);
 
     // Launch the asynchronous operation
-    //std::make_shared<session>(ioc, ctx)->run(host, port, target, version);
-    //std::cout << "Coroutine started on thread: " << std::this_thread::get_id() << '\n';
+    // std::make_shared<session>(ioc, ctx)->run(host, port, target, version);
+    // std::cout << "Coroutine started on thread: " << std::this_thread::get_id() << '\n';
 
     try
     {
@@ -73,8 +73,17 @@ co_helper::Task<void> test(net::io_context &ioc)
     {
         std::cerr << __func__ << " : " << e.what() << '\n';
     }
-    
-    //std::cout << "Coroutine resumed on thread: " << std::this_thread::get_id() << '\n';
+
+    // std::cout << "Coroutine resumed on thread: " << std::this_thread::get_id() << '\n';
+}
+
+template <std::integral T>
+co_helper::Generator<T> range(T first, const T last)
+{
+    while (first < last)
+    {
+        co_yield first++;
+    }
 }
 
 int main()
@@ -99,5 +108,5 @@ int main()
     std::cout << "The main ended at thread: " << std::this_thread::get_id() << '\n';
 
     ioc.run();
-    //getchar();
+    // getchar();
 }
